@@ -35,6 +35,9 @@ Window {
                 font.pixelSize: 16
                 anchors.top: hourInput.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: {
+                    restaurantController.available(hourInput.text)
+                }
             }
         }
 }

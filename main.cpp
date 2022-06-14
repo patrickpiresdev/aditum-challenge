@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "restaurantcontroller.h"
 
 
 int main(int argc, char *argv[])
@@ -17,6 +19,9 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+    RestaurantController restaurantController;
+    engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
 
     return app.exec();
 }
