@@ -6,18 +6,15 @@
 #include <vector>
 
 #include "restaurant.h"
+#include "restaurantdao.h"
 
-class RestaurantController : public QObject
-{
+class RestaurantController : public QObject {
     Q_OBJECT
-    std::vector<Restaurant> restaurants;
+    RestaurantDAO restaurantDao;
 public:
-    explicit RestaurantController(std::vector<Restaurant> restaurants);
+    explicit RestaurantController(RestaurantDAO restaurantDao);
 public slots:
     void available(const QString& hour);
-
-signals:
-
 };
 
 #endif // RESTAURANTCONTROLLER_H

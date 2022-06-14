@@ -7,7 +7,8 @@ QT += quick
 SOURCES += \
         main.cpp \
         restaurant.cpp \
-        restaurantcontroller.cpp
+        restaurantcontroller.cpp \
+        restaurantdao.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,4 +25,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     restaurant.h \
-    restaurantcontroller.h
+    restaurantcontroller.h \
+    restaurantdao.h
