@@ -1,9 +1,15 @@
 #include "restaurantcontroller.h"
-#include <iostream>
+#include "restaurant.h"
 
-RestaurantController::RestaurantController(QObject *parent)
-    : QObject{parent} {}
+#include <iostream>
+#include <vector>
+
+RestaurantController::RestaurantController(std::vector<Restaurant> restaurants):
+    restaurants(restaurants) {}
 
 void RestaurantController::available(const QString& hour) {
-    std::cout << hour.toStdString() << std::endl;
+    std::cout << "*** ALL RESTAURANTS (" << restaurants.size() << ") ***" << std::endl;
+    for (Restaurant restautant : restaurants) {
+        std::cout << restautant.getName() << std::endl;
+    }
 }

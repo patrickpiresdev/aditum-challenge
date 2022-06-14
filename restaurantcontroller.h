@@ -3,11 +3,16 @@
 
 #include <QObject>
 
+#include <vector>
+
+#include "restaurant.h"
+
 class RestaurantController : public QObject
 {
     Q_OBJECT
+    std::vector<Restaurant> restaurants;
 public:
-    explicit RestaurantController(QObject *parent = nullptr);
+    explicit RestaurantController(std::vector<Restaurant> restaurants);
 public slots:
     void available(const QString& hour);
 
