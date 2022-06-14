@@ -2,6 +2,7 @@
 #define RESTAURANT_H
 
 #include <string>
+#include <vector>
 
 class Restaurant {
     std::string name;
@@ -15,6 +16,7 @@ public:
     std::string opensAt();
     std::string closesAt();
     bool isOpenAt(std::string hour);
+    static Restaurant* from(std::string);
 };
 
 #endif // RESTAURANT_H

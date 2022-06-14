@@ -5,11 +5,18 @@ AvailableRestaurants::AvailableRestaurants(RestaurantDAO restaurantDao):
 
 std::vector<std::string> AvailableRestaurants::at(std::string hour) {
     std::vector<std::string> opened;
+    std::vector<Restaurant*> restaurants = restaurantDao.all();
 
-    for (Restaurant restaurant : restaurantDao.all()) {
-        if (restaurant.isOpenAt(hour)) {
-            opened.push_back(restaurant.getName());
+    if (restaurants.empty()) return opened;
+
+    Restaurant* restaurant;
+    while (!restaurants.empty()) {
+        restaurant = restaurants.back();
+        if (restaurant->isOpenAt(hour)) {
+            opened.push_back(restaurant->getName());
         }
+        restaurants.pop_back();
+        free(restaurant);
     }
 
     return opened;

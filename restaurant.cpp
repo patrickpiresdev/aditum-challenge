@@ -46,8 +46,26 @@ bool Restaurant::openedAtDawn() {
 }
 
 bool Restaurant::isOpenAt(std::string hour) {
-    if (openedAtDawn()) {
+    if (this->openedAtDawn()) {
         return !inRange(hour, closingHour, openingHour);
     }
     return inRange(hour, openingHour, closingHour);
+}
+
+Restaurant* Restaurant::from(std::string s) {
+    std::string attributes[] = {"", "", ""};
+
+    int p = 0;
+    char delimiter = ',';
+    for (char c : s) {
+        if (c == '"') continue;
+        if (c == delimiter) {
+            p++;
+            delimiter = '-';
+            continue;
+        }
+        attributes[p] += c;
+    }
+
+    return new Restaurant(attributes[0], attributes[1], attributes[2]);
 }

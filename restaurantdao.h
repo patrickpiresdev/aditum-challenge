@@ -2,13 +2,17 @@
 #define RESTAURANTDAO_H
 
 #include <vector>
+#include <string>
+#include <fstream>
+#include <iostream>
 
 #include "restaurant.h"
 
 class RestaurantDAO {
+    std::string datafilePath;
 public:
-    RestaurantDAO();
-    std::vector<Restaurant> all();
+    RestaurantDAO(std::string datafilePath);
+    std::vector<Restaurant*> all();
 };
 
 #endif // RESTAURANTDAO_H

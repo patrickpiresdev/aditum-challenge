@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    RestaurantDAO restaurantDao;
+    RestaurantDAO restaurantDao("C:/Users/patri/Downloads/restaurant-hours.csv");
     AvailableRestaurants availableRestaurants(restaurantDao);
     RestaurantController restaurantController(availableRestaurants);
     engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
