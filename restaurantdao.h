@@ -1,9 +1,9 @@
 #ifndef RESTAURANTDAO_H
 #define RESTAURANTDAO_H
 
-#include "restaurant.h"
-
 #include <vector>
+
+#include "restaurant.h"
 
 class RestaurantDAO {
 public:

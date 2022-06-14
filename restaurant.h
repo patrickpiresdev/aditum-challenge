@@ -5,11 +5,16 @@
 
 class Restaurant {
     std::string name;
-    std::string opensAt;
-    std::string closesAt;
+    std::string openingHour;
+    std::string closingHour;
+
+    bool openedAtDawn();
 public:
-    Restaurant(std::string name, std::string opensAt, std::string closesAt);
+    Restaurant(std::string name, std::string openingHour, std::string closingHour);
     std::string getName();
+    std::string opensAt();
+    std::string closesAt();
+    bool isOpenAt(std::string hour);
 };
 
 #endif // RESTAURANT_H

@@ -1,18 +1,19 @@
 #ifndef RESTAURANTCONTROLLER_H
 #define RESTAURANTCONTROLLER_H
 
+#include <iostream>
+#include <vector>
+#include <string>
+
 #include <QObject>
 
-#include <vector>
-
-#include "restaurant.h"
-#include "restaurantdao.h"
+#include "availablerestaurants.h"
 
 class RestaurantController : public QObject {
     Q_OBJECT
-    RestaurantDAO restaurantDao;
+    AvailableRestaurants availableRestaurants;
 public:
-    explicit RestaurantController(RestaurantDAO restaurantDao);
+    RestaurantController(AvailableRestaurants availableRestaurants);
 public slots:
     void available(const QString& hour);
 };

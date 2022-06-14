@@ -1,11 +1,12 @@
+#include <vector>
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include <vector>
-
+#include "restaurantdao.h"
+#include "availablerestaurants.h"
 #include "restaurantcontroller.h"
-#include "restaurant.h"
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -23,7 +24,8 @@ int main(int argc, char *argv[]) {
     engine.load(url);
 
     RestaurantDAO restaurantDao;
-    RestaurantController restaurantController(restaurantDao);
+    AvailableRestaurants availableRestaurants(restaurantDao);
+    RestaurantController restaurantController(availableRestaurants);
     engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
 
     return app.exec();

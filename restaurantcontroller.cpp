@@ -1,14 +1,12 @@
 #include "restaurantcontroller.h"
 
-#include <iostream>
-
-RestaurantController::RestaurantController(RestaurantDAO restaurantDao):
-    restaurantDao(restaurantDao) {}
+RestaurantController::RestaurantController(AvailableRestaurants availableRestaurants):
+    availableRestaurants(availableRestaurants) {}
 
 void RestaurantController::available(const QString& hour) {
-    std::vector<Restaurant> restaurants = restaurantDao.all();
+    std::vector<std::string> restaurants = availableRestaurants.at(hour.toStdString());
     std::cout << "*** ALL RESTAURANTS (" << restaurants.size() << ") ***" << std::endl;
-    for (Restaurant restautant : restaurants) {
-        std::cout << restautant.getName() << std::endl;
+    for (std::string restautant : restaurants) {
+        std::cout << restautant << std::endl;
     }
 }
