@@ -10,7 +10,7 @@
 #include "restaurantcontroller.h"
 
 // TODO: transform in relative path
-const std::string DEFAULT_DATAFILE_PATH = "C:/Users/patri/Documents/projects/code/aditum-challenge/aditum-challenge/resources/restaurant-hours.csv";
+const std::string DEFAULT_DATAFILE_PATH = "C:/User/patri/Documents/restaurant-hours.csv";
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)

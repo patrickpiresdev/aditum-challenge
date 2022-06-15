@@ -46,12 +46,10 @@ Window {
                 onClicked: {
                     myListView.model.clear()
                     let availableRestaurants = restaurantController.available(hourInput.text)
-                    if (availableRestaurants.length === 0) {
+                    if (availableRestaurants.length === 0)
                         myListView.model.append({ restaurant: "There are no available restaurants at this time!" })
-                    }
-                    for (let i = 0; i<availableRestaurants.length; i++) {
+                    for (let i = 0; i<availableRestaurants.length; i++)
                         myListView.model.append({ restaurant: i + " - " + availableRestaurants[i] });
-                    }
                 }
             }
         }
@@ -62,7 +60,6 @@ Window {
             ListView {
                 id: myListView
                 anchors.fill: parent
-                anchors.top: availableLabel.bottom
                 model: ListModel {}
                 spacing: 5
                 delegate: Text {
