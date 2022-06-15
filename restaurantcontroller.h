@@ -1,11 +1,12 @@
 #ifndef RESTAURANTCONTROLLER_H
 #define RESTAURANTCONTROLLER_H
 
-#include <iostream>
 #include <vector>
 #include <string>
 
 #include <QObject>
+#include <QString>
+#include <QStringList>
 
 #include "availablerestaurants.h"
 
@@ -15,7 +16,7 @@ class RestaurantController : public QObject {
 public:
     RestaurantController(AvailableRestaurants availableRestaurants);
 public slots:
-    void available(const QString& hour);
+    QStringList available(const QString& hour);
 };
 
 #endif // RESTAURANTCONTROLLER_H

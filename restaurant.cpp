@@ -46,9 +46,8 @@ bool Restaurant::openedAtDawn() {
 }
 
 bool Restaurant::isOpenAt(std::string hour) {
-    if (this->openedAtDawn()) {
+    if (this->openedAtDawn())
         return !inRange(hour, closingHour, openingHour);
-    }
     return inRange(hour, openingHour, closingHour);
 }
 

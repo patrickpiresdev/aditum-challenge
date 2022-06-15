@@ -3,23 +3,30 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.0
 
 Window {
-    width: 400
-    height: 250
+    width: 800
+    height: 400
     visible: true
     title: "Available Restaurants"
-    Column {
-            width: parent.width
+
+    Row {
+        width: parent.width
+        height: parent.height
+        spacing: 5
+
+        Item {
+            width: parent.width/2
             height: parent.height
-            spacing: 5
+
             Text {
                 id: label
                 text: "Select the hour"
                 font.family: "Arial"
-                font.pixelSize: 50
+                font.pixelSize: 35
                 font.bold: true
                 anchors.bottomMargin: 10
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
             TextField {
                 id: hourInput
                 width: 160
@@ -29,6 +36,7 @@ Window {
                 font.family: "Arial"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
             Button {
                 text: "Search"
                 font.family: "Arial"
@@ -36,8 +44,32 @@ Window {
                 anchors.top: hourInput.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    restaurantController.available(hourInput.text)
+                    myListView.model.clear()
+                    let availableRestaurants = restaurantController.available(hourInput.text)
+                    if (availableRestaurants.length === 0) {
+                        myListView.model.append({ restaurant: "There are no available restaurants at this time!" })
+                    }
+                    for (let i = 0; i<availableRestaurants.length; i++) {
+                        myListView.model.append({ restaurant: i + " - " + availableRestaurants[i] });
+                    }
                 }
             }
         }
+
+        Column {
+            width: parent.width/2
+            height: parent.height
+            ListView {
+                id: myListView
+                anchors.fill: parent
+                anchors.top: availableLabel.bottom
+                model: ListModel {}
+                spacing: 5
+                delegate: Text {
+                    text: restaurant
+                    font.pointSize: 12
+                }
+            }
+        }
+    }
 }

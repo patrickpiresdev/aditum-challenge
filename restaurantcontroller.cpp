@@ -3,10 +3,12 @@
 RestaurantController::RestaurantController(AvailableRestaurants availableRestaurants):
     availableRestaurants(availableRestaurants) {}
 
-void RestaurantController::available(const QString& hour) {
-    std::vector<std::string> restaurants = availableRestaurants.at(hour.toStdString());
-    std::cout << std::endl << "*** ALL RESTAURANTS (" << restaurants.size() << ") ***" << std::endl;
-    for (std::string restautant : restaurants) {
-        std::cout << restautant << std::endl;
+QStringList RestaurantController::available(const QString& hour) {
+    QStringList l;
+
+    for (std::string restaurant : availableRestaurants.at(hour.toStdString())) {
+        l << QString::fromUtf8(restaurant.c_str());
     }
+
+    return l;
 }

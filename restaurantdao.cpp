@@ -4,8 +4,7 @@ RestaurantDAO::RestaurantDAO(std::string datafilePath):
     datafilePath(datafilePath) {}
 
 std::vector<Restaurant*> getFromFile(std::string datafilePath) {
-    std::ifstream filestream;
-    filestream.open(datafilePath);
+    std::ifstream filestream(datafilePath);
 
     if (!filestream.is_open()) {
         std::cout << "Something went wrong on trying to read file: " << datafilePath << std::endl;

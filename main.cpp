@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -7,6 +8,9 @@
 #include "restaurantdao.h"
 #include "availablerestaurants.h"
 #include "restaurantcontroller.h"
+
+// TODO: transform in relative path
+const std::string DEFAULT_DATAFILE_PATH = "C:/Users/patri/Documents/projects/code/aditum-challenge/aditum-challenge/resources/restaurant-hours.csv";
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -23,7 +27,7 @@ int main(int argc, char *argv[]) {
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    RestaurantDAO restaurantDao("C:/Users/patri/Downloads/restaurant-hours.csv");
+    RestaurantDAO restaurantDao(DEFAULT_DATAFILE_PATH); // make path configurable
     AvailableRestaurants availableRestaurants(restaurantDao);
     RestaurantController restaurantController(availableRestaurants);
     engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
