@@ -4,13 +4,29 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QDir>
 
 #include "restaurantdao.h"
 #include "availablerestaurants.h"
 #include "restaurantcontroller.h"
 
-// TODO: transform in relative path
-const std::string DEFAULT_DATAFILE_PATH = "C:\\Users\\patri\\Documents\\restaurant-hours.csv";
+const std::string DEFAULT_DATAFILE_NAME = "restaurant-hours.csv";
+
+std::string getDataFilePath() {
+    QString curPath = QDir::currentPath();
+    QStringList curPathSplitted = curPath.split('/');
+
+    std::string dataFilePath = "";
+    for (int i = 0; i < curPathSplitted.size()-1; i++) {
+        dataFilePath.append(curPathSplitted[i].toStdString());
+        dataFilePath.append("/");
+    }
+
+    dataFilePath.append("aditum-challenge/data/");
+    dataFilePath.append(DEFAULT_DATAFILE_NAME);
+
+    return dataFilePath;
+}
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -27,7 +43,7 @@ int main(int argc, char *argv[]) {
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    RestaurantDAO restaurantDao(DEFAULT_DATAFILE_PATH);
+    RestaurantDAO restaurantDao(getDataFilePath());
     AvailableRestaurants availableRestaurants(restaurantDao);
     RestaurantController restaurantController(availableRestaurants);
     engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
