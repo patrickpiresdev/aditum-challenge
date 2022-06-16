@@ -5,13 +5,19 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        availablerestaurants.cpp \
         main.cpp \
-        restaurant.cpp \
-        restaurantcontroller.cpp \
-        restaurantdao.cpp
+        src/main/service/availablerestaurants.cpp \
+        src/main/model/restaurant.cpp \
+        src/main/controller/restaurantcontroller.cpp \
+        src/main/dao/restaurantdao.cpp
 
-RESOURCES += qml.qrc
+HEADERS += \
+    src/main/service/availablerestaurants.h \
+    src/main/model/restaurant.h \
+    src/main/controller/restaurantcontroller.h \
+    src/main/dao/restaurantdao.h
+
+RESOURCES += src/main/view/qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -23,9 +29,3 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS += \
-    availablerestaurants.h \
-    restaurant.h \
-    restaurantcontroller.h \
-    restaurantdao.h

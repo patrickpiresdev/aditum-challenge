@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "restaurant.h"
+#include "../model/restaurant.h"
 
 class RestaurantDAO {
     std::string datafilePath;

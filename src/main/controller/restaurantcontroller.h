@@ -8,7 +8,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "availablerestaurants.h"
+#include "../service/availablerestaurants.h"
 
 class RestaurantController : public QObject {
     Q_OBJECT

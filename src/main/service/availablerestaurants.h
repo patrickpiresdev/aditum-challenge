@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 
-#include "restaurantdao.h"
-#include "restaurant.h"
+#include "../dao/restaurantdao.h"
+#include "../model/restaurant.h"
 
 class AvailableRestaurants {
     RestaurantDAO restaurantDao;
