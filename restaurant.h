@@ -9,7 +9,10 @@ class Restaurant {
     std::string openingHour;
     std::string closingHour;
 
-    bool openedAtDawn();
+    bool opensLateNight();
+    bool isOpeningHour(std::string hour);
+    bool isClosingHour(std::string hour);
+
 public:
     Restaurant(std::string name, std::string openingHour, std::string closingHour);
     std::string getName();

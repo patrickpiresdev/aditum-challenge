@@ -41,13 +41,29 @@ bool inRange(std::string hour, std::string start, std::string end) {
     return liminf <= 0 && 0 <= limsup;
 }
 
-bool Restaurant::openedAtDawn() {
+bool Restaurant::opensLateNight() {
     return compare(openingHour, closingHour) > 0;
 }
 
+bool equalHours(std::string hour1, std::string hour2) {
+    return compare(hour1, hour2) == 0;
+}
+
+bool Restaurant::isOpeningHour(std::string hour) {
+    return equalHours(hour, openingHour);
+}
+
+bool Restaurant::isClosingHour(std::string hour) {
+    return equalHours(hour, closingHour);
+}
+
 bool Restaurant::isOpenAt(std::string hour) {
-    if (this->openedAtDawn())
+    if (this->opensLateNight()) {
+        if (isOpeningHour(hour) || isClosingHour(hour))
+            return true;
         return !inRange(hour, closingHour, openingHour);
+    }
+
     return inRange(hour, openingHour, closingHour);
 }
 
