@@ -10,7 +10,7 @@
 #include "restaurantcontroller.h"
 
 // TODO: transform in relative path
-const std::string DEFAULT_DATAFILE_PATH = "C:/User/patri/Documents/restaurant-hours.csv";
+const std::string DEFAULT_DATAFILE_PATH = "C:\\Users\\patri\\Documents\\restaurant-hours.csv";
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    RestaurantDAO restaurantDao(DEFAULT_DATAFILE_PATH); // make path configurable
+    RestaurantDAO restaurantDao(DEFAULT_DATAFILE_PATH);
     AvailableRestaurants availableRestaurants(restaurantDao);
     RestaurantController restaurantController(availableRestaurants);
     engine.rootContext()->setContextProperty("restaurantController", &restaurantController);
