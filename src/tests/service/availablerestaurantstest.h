@@ -75,7 +75,7 @@ void testWhenThereAreNoRestaurantsAvailable(AvailableRestaurants& availableResta
     assertTrue(restaurants.size() == 0);
 }
 
-int availableRestaurantsTests() {
+void availableRestaurantsTests() {
     startingTestsFor("AVAILABLE RESTAURANTS SERVICE");
 
     createDataFile();

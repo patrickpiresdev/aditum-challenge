@@ -35,25 +35,13 @@ std::string Restaurant::closesAt() {
     return closingHour;
 }
 
-int compare(char c1, char c2) {
-    return c1-c2;
+int Restaurant::compare(const std::string& hour1, const std::string& hour2) {
+    if (hour1.length() > hour2.length()) return 1;
+    if (hour1.length() < hour2.length()) return -1;
+    return hour1.compare(hour2);
 }
 
-int compare(const std::string& s1, const std::string& s2) {
-    if (s1.length() > s2.length()) return 1;
-    if (s1.length() < s2.length()) return -1;
-
-    int compared;
-    for (int i = 0; i < s1.length(); i++) {
-        compared = compare(s1[i], s2[i]);
-        if (compared > 0) return 1;
-        if (compared < 0) return -1;
-    }
-
-    return 0;
-}
-
-bool inRange(std::string hour, std::string start, std::string end) {
+bool Restaurant::inRange(const std::string& hour, const std::string& start, const std::string& end) {
     int liminf = compare(start, hour);
     int limsup = compare(end, hour);
     return liminf <= 0 && 0 <= limsup;
@@ -63,7 +51,7 @@ bool Restaurant::opensLateNight() {
     return compare(openingHour, closingHour) > 0;
 }
 
-bool equalHours(const std::string& hour1, const std::string& hour2) {
+bool Restaurant::equalHours(const std::string& hour1, const std::string& hour2) {
     return compare(hour1, hour2) == 0;
 }
 

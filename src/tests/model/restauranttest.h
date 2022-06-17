@@ -37,7 +37,7 @@ void lateNightRestaurantShouldBeClosed() {
     assertTrue(!restaurant.isOpenAt("5:01"));
 }
 
-int restaurantTests() {
+void restaurantTests() {
     startingTestsFor("RESTAURANT");
     ordinaryRestaurantShouldBeOpen();
     std::cout << std::endl;
