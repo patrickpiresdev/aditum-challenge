@@ -1,3 +1,6 @@
+#ifndef AVAILABLERESTAURANTSTEST_H
+#define AVAILABLERESTAURANTSTEST_H
+
 #include "../testutils.h"
 
 #include "../../main/service/availablerestaurants.h"
@@ -58,12 +61,6 @@ void availableRestaurantsInTheAfternoon(AvailableRestaurants& availableRestauran
     assertTrue(contains(restaurants, expected));
 }
 
-void testWhenThereAreNoRestaurantsAvailable(AvailableRestaurants& availableRestaurants) {
-    startingUnitTest("THERE ARE NO RESTAURANTS AVAILABLE");
-    std::vector<std::string> restaurants = availableRestaurants.at("23:00");
-    assertTrue(restaurants.size() == 0);
-}
-
 void availableRestaurantsInTheLateNight(AvailableRestaurants& availableRestaurants) {
     startingUnitTest("RESTAURANTS AVAILABLE IN THE LATE NIGHT");
     std::vector<std::string> restaurants = availableRestaurants.at("2:00");
@@ -72,7 +69,13 @@ void availableRestaurantsInTheLateNight(AvailableRestaurants& availableRestauran
     assertTrue(contains(restaurants, expected));
 }
 
-int main() {
+void testWhenThereAreNoRestaurantsAvailable(AvailableRestaurants& availableRestaurants) {
+    startingUnitTest("THERE ARE NO RESTAURANTS AVAILABLE");
+    std::vector<std::string> restaurants = availableRestaurants.at("23:00");
+    assertTrue(restaurants.size() == 0);
+}
+
+int availableRestaurantsTests() {
     startingTestsFor("AVAILABLE RESTAURANTS SERVICE");
 
     createDataFile();
@@ -81,9 +84,10 @@ int main() {
 
     availableRestaurantsInTheMorning(availableRestaurants);
     availableRestaurantsInTheAfternoon(availableRestaurants);
-    testWhenThereAreNoRestaurantsAvailable(availableRestaurants);
     availableRestaurantsInTheLateNight(availableRestaurants);
-    
+    testWhenThereAreNoRestaurantsAvailable(availableRestaurants);
 
     deleteDataFile();
 }
+
+#endif

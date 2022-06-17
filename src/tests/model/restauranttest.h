@@ -1,3 +1,6 @@
+#ifndef RESTAURANTTEST_H
+#define RESTAURANTTEST_H
+
 #include <iostream>
 
 #include "../../main/model/restaurant.h"
@@ -5,7 +8,7 @@
 #include "../testutils.h"
 
 void ordinaryRestaurantShouldBeOpen() {
-    std::cout << "=== ORDINARY RESTAURANT SHOULD BE OPEN ===" << std::endl;
+    startingUnitTest("ORDINARY RESTAURANT SHOULD BE OPEN");
     Restaurant restaurant("restaurant", "9:00", "18:00");
     assertTrue(restaurant.isOpenAt("9:00"));
     assertTrue(restaurant.isOpenAt("13:30"));
@@ -13,14 +16,14 @@ void ordinaryRestaurantShouldBeOpen() {
 }
 
 void ordinaryRestaurantShoudBeClosed() {
-    std::cout << "=== ORDINARY RESTAURANT SHOULD BE CLOSED ===" << std::endl;
+    startingUnitTest("ORDINARY RESTAURANT SHOULD BE CLOSED");
     Restaurant restaurant("restaurant", "9:00", "18:00");
     assertTrue(!restaurant.isOpenAt("8:59"));
     assertTrue(!restaurant.isOpenAt("18:01"));
 }
 
 void lateNightRestaurantShouldBeOpen() {
-    std::cout << "=== LATE NIGHT RESTAURANT SHOULD BE OPEN ===" << std::endl;
+    startingUnitTest("LATE NIGHT RESTAURANT SHOULD BE OPEN");
     Restaurant restaurant("restaurant", "20:00", "5:00");
     assertTrue(restaurant.isOpenAt("20:00"));
     assertTrue(restaurant.isOpenAt("24:30"));
@@ -28,13 +31,13 @@ void lateNightRestaurantShouldBeOpen() {
 }
 
 void lateNightRestaurantShouldBeClosed() {
-    std::cout << "=== LATE NIGHT RESTAURANT SHOULD BE CLOSED ===" << std::endl;
+    startingUnitTest("LATE NIGHT RESTAURANT SHOULD BE CLOSED");
     Restaurant restaurant("restaurant", "20:00", "5:00");
     assertTrue(!restaurant.isOpenAt("19:59"));
     assertTrue(!restaurant.isOpenAt("5:01"));
 }
 
-int main() {
+int restaurantTests() {
     startingTestsFor("RESTAURANT");
     ordinaryRestaurantShouldBeOpen();
     std::cout << std::endl;
@@ -44,3 +47,5 @@ int main() {
     std::cout << std::endl;
     lateNightRestaurantShouldBeClosed();
 }
+
+#endif
