@@ -3,6 +3,11 @@
 RestaurantDAO::RestaurantDAO(std::string datafilePath):
     datafilePath(datafilePath) {}
 
+void RestaurantDAO::skipHeader(std::ifstream& ifs) {
+    std::string line;
+    std::getline(ifs, line);
+}
+
 std::vector<Restaurant*> RestaurantDAO::all() {
     std::ifstream filestream;
 
@@ -14,11 +19,12 @@ std::vector<Restaurant*> RestaurantDAO::all() {
 
     std::vector<Restaurant*> restaurants;
     std::string line;
-    std::getline(filestream, line); // skip first line -> header
+    skipHeader(filestream);
 
     while (!filestream.eof()) {
-        restaurants.push_back(Restaurant::from(line));
         std::getline(filestream, line);
+        if (line.compare("\n") != 0 && line.compare("") != 0)
+            restaurants.push_back(Restaurant::from(line));
     }
 
     filestream.close();

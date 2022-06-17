@@ -16,7 +16,7 @@ std::vector<std::string> AvailableRestaurants::at(std::string hour) {
             opened.push_back(restaurant->getName());
         }
         restaurants.pop_back();
-        free(restaurant);
+        delete restaurant;
     }
 
     return opened;

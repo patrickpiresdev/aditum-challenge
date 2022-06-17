@@ -10,6 +10,8 @@
 
 class RestaurantDAO {
     std::string datafilePath;
+
+    void skipHeader(std::ifstream&);
 public:
     RestaurantDAO(std::string datafilePath);
     std::vector<Restaurant*> all();
