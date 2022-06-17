@@ -8,12 +8,14 @@ SOURCES += \
         src/main/app.cpp \
         src/main/service/availablerestaurants.cpp \
         src/main/model/restaurant.cpp \
+        src/main/model/hour.cpp \
         src/main/controller/restaurantcontroller.cpp \
         src/main/dao/restaurantdao.cpp
 
 HEADERS += \
     src/main/service/availablerestaurants.h \
     src/main/model/restaurant.h \
+    src/main/model/hour.h \
     src/main/controller/restaurantcontroller.h \
     src/main/dao/restaurantdao.h
 

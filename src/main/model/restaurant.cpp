@@ -27,44 +27,24 @@ std::string Restaurant::getName() {
     return name;
 }
 
-std::string Restaurant::opensAt() {
-    return openingHour;
-}
-
-std::string Restaurant::closesAt() {
-    return closingHour;
-}
-
-int Restaurant::compare(const std::string& hour1, const std::string& hour2) {
-    if (hour1.length() > hour2.length()) return 1;
-    if (hour1.length() < hour2.length()) return -1;
-    return hour1.compare(hour2);
-}
-
-bool Restaurant::inRange(const std::string& hour, const std::string& start, const std::string& end) {
-    int liminf = compare(start, hour);
-    int limsup = compare(end, hour);
-    return liminf <= 0 && 0 <= limsup;
+bool Restaurant::inRange(const Hour& hour, const Hour& start, const Hour& end) {
+    return start.compare(hour) <= 0 && 0 <= end.compare(hour);
 }
 
 bool Restaurant::opensLateNight() {
-    return compare(openingHour, closingHour) > 0;
+    return openingHour.compare(closingHour) > 0;
 }
 
-bool Restaurant::equalHours(const std::string& hour1, const std::string& hour2) {
-    return compare(hour1, hour2) == 0;
+bool Restaurant::isOpeningHour(const Hour& hour) {
+    return hour.equal(openingHour);
 }
 
-bool Restaurant::isOpeningHour(const std::string& hour) {
-    return equalHours(hour, openingHour);
+bool Restaurant::isClosingHour(const Hour& hour) {
+    return hour.equal(closingHour);
 }
 
-bool Restaurant::isClosingHour(const std::string& hour) {
-    return equalHours(hour, closingHour);
-}
-
-bool Restaurant::isOpenAt(const std::string& hour) {
-    if (this->opensLateNight()) {
+bool Restaurant::isOpenAt(const Hour& hour) {
+    if (opensLateNight()) {
         if (isOpeningHour(hour) || isClosingHour(hour))
             return true;
         return !inRange(hour, closingHour, openingHour);
