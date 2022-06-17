@@ -2,7 +2,6 @@
 #define RESTAURANT_H
 
 #include <string>
-#include <vector>
 
 class Restaurant {
     std::string name;

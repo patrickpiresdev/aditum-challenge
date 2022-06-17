@@ -1,7 +1,6 @@
 #ifndef RESTAURANTCONTROLLER_H
 #define RESTAURANTCONTROLLER_H
 
-#include <vector>
 #include <string>
 
 #include <QObject>

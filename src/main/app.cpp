@@ -6,9 +6,9 @@
 #include <QQmlContext>
 #include <QDir>
 
-#include "restaurantdao.h"
-#include "availablerestaurants.h"
-#include "restaurantcontroller.h"
+#include "./dao/restaurantdao.h"
+#include "./service/availablerestaurants.h"
+#include "./controller/restaurantcontroller.h"
 
 const std::string DEFAULT_DATAFILE_NAME = "restaurant-hours.csv";
 
