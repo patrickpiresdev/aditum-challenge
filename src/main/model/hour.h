@@ -2,12 +2,16 @@
 #define HOUR_H
 
 #include <string>
+#include <cmath>
 
 class Hour {
-    std::string hourStr;
+    int hourValue;
+
+    int toInt(char);
+    int toInt(const std::string& hourStr);
 public:
-    Hour(std::string hourStr);
-    std::string value() const;
+    Hour(const std::string& hourStr);
+    int value() const;
     int compare(const Hour& another) const;
     bool equal(const Hour& another) const;
 };
