@@ -24,10 +24,18 @@ int Hour::value() const {
     return hourValue;
 }
 
+int Hour::compare(int another) const {
+    return hourValue - another;
+}
+
 int Hour::compare(const Hour& another) const {
-    return hourValue - another.value();
+    return compare(another.value());
 }
 
 bool Hour::equal(const Hour& another) const {
     return compare(another) == 0;
+}
+
+bool Hour::inRange(const Hour& start, const Hour& end) const {
+    return start.compare(hourValue) <= 0 && 0 <= end.compare(hourValue);
 }

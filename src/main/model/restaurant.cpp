@@ -27,10 +27,6 @@ std::string Restaurant::getName() {
     return name;
 }
 
-bool Restaurant::inRange(const Hour& hour, const Hour& start, const Hour& end) {
-    return start.compare(hour) <= 0 && 0 <= end.compare(hour);
-}
-
 bool Restaurant::opensLateNight() {
     return openingHour.compare(closingHour) > 0;
 }
@@ -47,8 +43,8 @@ bool Restaurant::isOpenAt(const Hour& hour) {
     if (opensLateNight()) {
         if (isOpeningHour(hour) || isClosingHour(hour))
             return true;
-        return !inRange(hour, closingHour, openingHour);
+        return !hour.inRange(closingHour, openingHour);
     }
 
-    return inRange(hour, openingHour, closingHour);
+    return hour.inRange(openingHour, closingHour);
 }

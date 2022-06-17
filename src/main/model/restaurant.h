@@ -10,7 +10,6 @@ class Restaurant {
     Hour openingHour;
     Hour closingHour;
 
-    bool inRange(const Hour& hour, const Hour& start, const Hour& end);
     bool opensLateNight();
     bool isOpeningHour(const Hour& hour);
     bool isClosingHour(const Hour& hour);
