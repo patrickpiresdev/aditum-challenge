@@ -19,3 +19,15 @@ Isso ocorre com uma simples verificação direta sobre a entidade `Restaurant` p
 Esta camada contém uma classe que recebe como argumento no construtor o caminho para o arquivo com os dados necessários para este desafio (`restaurant-hours.csv`).
 
 > OBS.: Esse path é fixo, pois o arquivo se encontra junto com a solução na pasta [data](https://github.com/patrickpiresdev/aditum-challenge/tree/master/data). A princípio, eu não colocaria os dados junto da aplicação, nem deixaria esse caminho para o arquivo fixo. Contudo, achei uma forma simples de ter acesso aos dados para o cenário deste desafio.
+
+## Model
+
+Nesta camada temos duas entidades `Restaurant` e `Hour`. Resolvi criar essas duas entidades para separar melhor a lógica de cada uma.
+
+### Restaurant
+A necessidade da entidade `Restaurant` se faz necessária por, bem... Na verdade, é bem auto-explicativa, não é mesmo?! (HAHAHA) Precisamos dela para modelarmos os estados e comportamentos referentes aos dados de restaurantes vindos do arquivo de dados.
+
+- Há dois métodos que vejo mais necessidade de explicar aqui. São eles: `isOpenAt` e `opensLateNight`:
+    - `isOpenAt`: esse método a priori só precisaria ver se o restaurante em questão está aberto no horário indicado, i.e., verificar se a hora fornecida se encontra dentro do intervalo fechado [`openingHour`, `closingHour`].
+    Contudo, há um cenário em que esse método falha que é o de restaurantes que abrem bem tarde da noite e fecham pela madrugada. Estaria mais para um restaurante/bar neste caso, contudo ainda é um caso de borda. Mas para resolvermos esse cenário, basta verificarmos se o horário fornecido basta negarmos a função passando o intervalo [`closingHour`, `openingHour`]
+    - `opensLateNight`: Este método verifica se o restaurante em questão é um dos que cai no cenário atípico indicado acima. Onde o restaurante dica aberto pela madrugada (_late night_), i.e., seu horário de fechamento (`closingTime`) e menor que o de abertura (`openingTime`)
