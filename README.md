@@ -24,3 +24,7 @@ O que será avaliado:
 O desafio deve ser entregue usando o **Qt 5.15.0** num **repositório público do GitHub** para que o time possa avaliar a qualidade da sua entrega.
 
 A implementação da UI deve ser feita em **QML** e o método availableHours deve estar em **C++**.
+
+## Documentação
+
+- [Arquitetura](https://github.com/patrickpiresdev/aditum-challenge/blob/master/docs/arquitetura.md)
