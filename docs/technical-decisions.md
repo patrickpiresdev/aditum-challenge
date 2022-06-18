@@ -18,4 +18,4 @@ Isso ocorre com uma simples verificação direta sobre a entidade `Restaurant` p
 
 Esta camada contém uma classe que recebe como argumento no construtor o caminho para o arquivo com os dados necessários para este desafio (`restaurant-hours.csv`).
 
-> OBS.: Esse path é fixo, pois o arquivo se encontra junto com a solução na pasta [`data`](https://github.com/patrickpiresdev/aditum-challenge/tree/master/data). A princípio, eu não colocaria os dados junto da aplicação, nem deixaria esse caminho para o arquivo fixo. Contudo, achei uma forma simples de ter acesso aos dados para o cenário deste desafio.
+> OBS.: Esse path é fixo, pois o arquivo se encontra junto com a solução na pasta [data](https://github.com/patrickpiresdev/aditum-challenge/tree/master/data). A princípio, eu não colocaria os dados junto da aplicação, nem deixaria esse caminho para o arquivo fixo. Contudo, achei uma forma simples de ter acesso aos dados para o cenário deste desafio.

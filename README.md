@@ -28,3 +28,5 @@ A implementação da UI deve ser feita em **QML** e o método availableHours d
 ## Documentação
 
 - [Arquitetura](https://github.com/patrickpiresdev/aditum-challenge/blob/master/docs/architecture/architecture.md)
+
+- [Decisões técnicas](https://github.com/patrickpiresdev/aditum-challenge/blob/master/docs/technical-decisions.md)
