@@ -35,3 +35,14 @@ A necessidade da entidade `Restaurant` se faz necessária por, bem... Na verdade
 ### Hour
 
 O mais relevante dessa classe a ser comentado é que ela não trabalha com tempo propriamete dito. Mas sim com inteiros. Dada uma hora em formato de string "15:05", por exemplo, podemos considerar somente os numeros sem os dois pontos 1505 já que o princípio do algarismo mais relevante ficar mais para esquerda tanto nas horas quanto em numeros na base decimal que estamos acostumados. Desta forma consigo fazer comparações entre diferentes horas com simples operações matemáticas sem precisar fazer uso de alguma "biblioteca" de tempo que exigiria mais uma conversão a ser feita. De string para número e então para hora. com a abordagem descrita acima, deixo essa ultima etapa de lado para tornar o código leeevemente mais eficiente. 
+
+
+## Eficiência
+
+Algumas das minhas escolhas para melhorar a eficiência do código foram:
+
+- Trabalhar, em sua maioria, com referências à strings para evitar muita cópia de memória das strings inteiras.
+- A Escolha da abordagem descrita na sessão acima sobre a entidade 'Hour'.
+- Trabalhar com variáveis locais sem fazer muita alocação de memória. Afinal, alocação de variáveis na stack é menos custosa que na heap.
+
+Outra escolha que poderia ter feito seria trabalhar com smart pointers na lista de restaurantes retornada pelo `dao` para deixar que eles lidem melhor (e de forma mais inteligente) com os ponteiros. Contudo, tenho mais familiaridade com ponteiros "crus" propriamente ditos e preferi trabalhar com eles para não fazer besteira.
