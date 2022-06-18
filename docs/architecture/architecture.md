@@ -4,7 +4,7 @@ Abaixo podemos ver um desenho de como funciona a arquitetura da solução em cam
 
 > OBS.: Por ser um problema relativamente simples a ser resolvido não acredito que uma arquitetura tão rebuscada. Contudo, como um dos requisitos de avaliação do desafio é **arquitetura**, resolvi montar a solução abaixo
 
-![](./arq.png)
+![](./architecture.png)
 
 ## Camadas
 
